@@ -3,7 +3,6 @@ import { authMiddleware, requireRole } from '../middleware/auth.js';
 
 const router = express.Router();
 
-// Search parts
 router.get('/', authMiddleware, requireRole(['buyer']), async (req, res) => {
   try {
     const { query, category, manufacturer, limit = 20, offset = 0 } = req.query;
@@ -13,7 +12,6 @@ router.get('/', authMiddleware, requireRole(['buyer']), async (req, res) => {
   }
 });
 
-// Get part details
 router.get('/:id', authMiddleware, async (req, res) => {
   try {
     res.json({ message: 'Part details' });
@@ -22,7 +20,6 @@ router.get('/:id', authMiddleware, async (req, res) => {
   }
 });
 
-// Get categories
 router.get('/categories/list', authMiddleware, async (req, res) => {
   try {
     res.json({ categories: [] });
